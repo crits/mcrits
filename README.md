@@ -22,3 +22,8 @@ After you edited the configuration file and imported the mcrits.mtz file into Ma
 <p align="center">
 <img src="http://f.cl.ly/items/1X202V2y0F0x2R1G1w2H/Screen%20Shot%202014-11-17%20at%2011.38.04%20AM.png"></p>
 
+Once you display the indicators under each type/campaign, you are able to view additional information about each indicator in the right-hand column under "Properties". Below is a snapshot of some of the available fields.
+
+<p align="center">
+<img src="http://cl.ly/image/0T3t041G3831/Screen%20Shot%202014-11-17%20at%205.31.37%20PM.png"></p>
+
