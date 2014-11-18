@@ -19,10 +19,13 @@ Before running mcrits, you will need to edit the configuration file mcrits/local
 
 After you edited the configuration file and imported the mcrits.mtz file into Maltego, you are ready to go. To get started, from the palette, under mcrits, drag the "CRITs Server" icon into the main graph window. Right-clicking on the CRITs server will allow you to list the current campaigns in your CRITs DB. There are two categories of campaigns that will be displayed under the server, one is the campaigns you define, and the other is an "UNKNOWN" default category that will hold all the indicators that aren't assigned to a campaign. So, once the campaigns are displayed, you can right-click on each campaign to either display the indicator types or the actors belonging to that campaign. For now, the actors are the last-object and there is no more transforms available, however, if you right-click on an indicator type, you can list the indicators belonging to that type and that campaign. Below is a screenshot of a sample environment.
 
-Instead of filling up the pallette with tons and tons of icons for each type of indicator, I just assigned a particular icon to match the big sets, such as, Windows, File, Network, DNS, IP Address, etc. So, some icons may be generic, while others have a distinguishing icon, I'll continue to update the icon sets in the future though.
+<p align="center">
+<img src="http://f.cl.ly/items/1Y241U0Z1W2R2W2a0u46/Screen%20Shot%202014-11-18%20at%204.32.11%20PM.png"></p>
+
+After you display the indicators from each type, you can then perform the indicator type specific functions you normally can in Maltego, such as Domain to IP, or Email Address to Social Network accounts.
 
 <p align="center">
-<img src="http://f.cl.ly/items/1d172D0j0O1g1C1c2H1s/Screen%20Shot%202014-11-18%20at%2010.04.26%20AM.png"></p>
+<img src="http://f.cl.ly/items/1U351r2o2o1k081D091b/Screen%20Shot%202014-11-18%20at%204.32.31%20PM.png"></p>
 
 Once you display the indicators under each type/campaign, you are able to view additional information about each indicator in the right-hand column under "Properties". Below is a snapshot of some of the available fields.
 
@@ -32,4 +35,4 @@ Once you display the indicators under each type/campaign, you are able to view a
 ### Todo
 
 - Add relationships to each indicator. When you right-click on an entity, you will be able to view the relationships, which will connect the indicator to other indicators/actors/campaigns that were defined.
-- Continue to add icons for more popular indicator types
+- Build Windows version
