@@ -41,4 +41,4 @@ Once you display the indicators under each type/campaign, you are able to view a
 ### Todo
 
 - Add relationships to each indicator. When you right-click on an entity, you will be able to view the relationships, which will connect the indicator to other indicators/actors/campaigns that were defined.
-- Build Windows version
+
