@@ -49,7 +49,7 @@ class MaltegoEntity(object):
 			self.displayInformation = di;		
 			
 	def addAdditionalFields(self,fieldName=None,displayName=None,matchingRule=False,value=None):
-		self.additionalFields.append([sanitise(fieldName),sanitise(displayName),matchingRule,sanitise(value)]);
+		self.additionalFields.append([sanitise(fieldName),sanitise(displayName),matchingRule,value]);
 	
 	def setIconURL(self,iU=None):
 		if (iU is not None):

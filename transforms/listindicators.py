@@ -44,16 +44,71 @@ params = {
 'username': username,
 }
 
+elems = ['_id','bucket_list','created','modified','sectors','status']
+
 r = requests.get(url, params=params, verify=False)
 j = json.loads(r.text)
 for ioc in j['objects']:
 	if ioc['campaign'] == [] and campaignname == "Unknown" and ioc['type'] == ioctype:
-		ent = me.addEntity("mcrits.Indicator",ioc['value'])
+		if ioc['type'].startswith("Address"):
+			ent = me.addEntity("mcrits.Address",ioc['value'])
+		elif ioc['type'].startswith("DNS"):
+			ent = me.addEntity("mcrits.DNS",ioc['value'])
+		elif ioc['type'].startswith("Disk"):
+			ent = me.addEntity("mcrits.Disk",ioc['value'])
+		elif ioc['type'].startswith("Library"):
+			ent = me.addEntity("mcrits.Library",ioc['value'])
+		elif ioc['type'].startswith("Network"):
+			ent = me.addEntity("mcrits.Network",ioc['value'])
+		elif ioc['type'].startswith("URI"):
+			ent = me.addEntity("mcrits.URI",ioc['value'])
+		elif ioc['type'].startswith("Win"):
+			ent = me.addEntity("mcrits.Windows",ioc['value'])
+		else:
+			ent = me.addEntity("mcrits.Indicator",ioc['value'])
+		for elem in elems:
+			if ioc[elem] == []:
+				pass
+			else:
+				if len(ioc[elem][0]) == 1:
+					ent.addAdditionalFields(elem, elem,'',ioc[elem])
+				else:
+					ent.addAdditionalFields(elem, elem,'',ioc[elem][0])
+					ent.addAdditionalFields('confidence','confidence','',ioc['confidence']['rating'])
+					ent.addAdditionalFields('impact','impact','',ioc['impact']['rating'])
+					ent.addAdditionalFields('source','source','',ioc['source'][0]['name'])
+					ent.addAdditionalFields('campaign', 'campaign','',campaignname)
 	else:
 		for value in ioc['campaign']:
 			if value['name'] == campaignname and ioc['type'] == ioctype:
+				if ioc['type'].startswith("Address"):
+					ent = me.addEntity("mcrits.Address",ioc['value'])
+				elif ioc['type'].startswith("DNS"):
+					ent = me.addEntity("mcrits.DNS",ioc['value'])
+				elif ioc['type'].startswith("Disk"):
+					ent = me.addEntity("mcrits.Disk",ioc['value'])
+				elif ioc['type'].startswith("Library"):
+					ent = me.addEntity("mcrits.Library",ioc['value'])
+				elif ioc['type'].startswith("Network"):
+					ent = me.addEntity("mcrits.Network",ioc['value'])
+				elif ioc['type'].startswith("URI"):
+					ent = me.addEntity("mcrits.URI",ioc['value'])
+				elif ioc['type'].startswith("Win"):
+					ent = me.addEntity("mcrits.Windows",ioc['value'])
+				else:
 					ent = me.addEntity("mcrits.Indicator",ioc['value'])
-
-# Return Maltego Output
+				# Add additional fields to entity
+				for elem in elems:
+					if ioc[elem] == []:
+						pass
+					else:
+						if len(ioc[elem][0]) == 1:
+							ent.addAdditionalFields(elem, elem,'',ioc[elem])
+						else:
+							ent.addAdditionalFields(elem, elem,'',ioc[elem][0])
+							ent.addAdditionalFields('confidence','confidence','',ioc['confidence']['rating'])
+							ent.addAdditionalFields('impact','impact','',ioc['impact']['rating'])
+							ent.addAdditionalFields('source','source','',ioc['source'][0]['name'])
+							ent.addAdditionalFields('campaign', 'campaign','',campaignname)
 
 me.returnOutput()
