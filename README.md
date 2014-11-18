@@ -4,6 +4,12 @@
 
 mcrits is a set of Maltego transforms that enable you to visualize your CRIT's DB, which currently includes the ability to view the current campaigns, the types of indicators in each campaign, as well as the indicators and actors in each campaign. There is an abundance of information available in CRITs, so I'm trying to determine the best way to visualize that in Maltego without overloading the user and maintaining some sort of order. If you have any additions you think would be good to mcrits, please let me know.
 
+### Requirements
+
+```
+Requests Python Module
+```
+
 ### Installation
 
 ```
