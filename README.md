@@ -2,7 +2,7 @@
 ##### Visualize CRITs IOC's in Maltego
 -------------------------------------------------
 
-mcrits is a set of Maltego transforms that enable you to visualize your CRIT's DB, which currently includes the ability to view the current campaigns, the types of indicators in each campaign, as well as the indicators for each campaign. There is an abundance of information available in CRITs, so I'm trying to determine the best way to visualize that in Maltego without overloading the user and maintaining some sort of order. If you have any additions you think would be good to mcrits, please let me know.
+mcrits is a set of Maltego transforms that enable you to visualize your CRIT's DB, which currently includes the ability to view the current campaigns, the types of indicators in each campaign, as well as the indicators and actors in each campaign. There is an abundance of information available in CRITs, so I'm trying to determine the best way to visualize that in Maltego without overloading the user and maintaining some sort of order. If you have any additions you think would be good to mcrits, please let me know.
 
 ### Installation
 
@@ -17,10 +17,12 @@ Before running mcrits, you will need to edit the configuration file mcrits/local
 
 ### Using mcrits
 
-After you edited the configuration file and imported the mcrits.mtz file into Maltego, you are ready to go. To get started, from the palette, under mcrits, drag the "CRITs Server" icon into the main graph window. Right-clicking on this will allow you to list the current campaigns in your CRITs DB. Next, you can select all or one of the indicator type icons under the campaign and right-click to select the "List Indicators" transform. This will list each indicator under the appropriate campaign and type. Below is a screenshot of a sample environment.
+After you edited the configuration file and imported the mcrits.mtz file into Maltego, you are ready to go. To get started, from the palette, under mcrits, drag the "CRITs Server" icon into the main graph window. Right-clicking on the CRITs server will allow you to list the current campaigns in your CRITs DB. There are two categories of campaigns that will be displayed under the server, one is the campaigns you define, and the other is an "UNKNOWN" default category that will hold all the indicators that aren't assigned to a campaign. So, once the campaigns are displayed, you can right-click on each campaign to either display the indicator types or the actors belonging to that campaign. For now, the actors are the last-object and there is no more transforms available, however, if you right-click on an indicator type, you can list the indicators belonging to that type and that campaign. Below is a screenshot of a sample environment.
+
+Instead of filling up the pallette with tons and tons of icons for each type of indicator, I just assigned a particular icon to match the big sets, such as, Windows, File, Network, DNS, IP Address, etc. So, some icons may be generic, while others have a distinguishing icon, I'll continue to update the icon sets in the future though.
 
 <p align="center">
-<img src="http://f.cl.ly/items/1X202V2y0F0x2R1G1w2H/Screen%20Shot%202014-11-17%20at%2011.38.04%20AM.png"></p>
+<img src="http://f.cl.ly/items/1d172D0j0O1g1C1c2H1s/Screen%20Shot%202014-11-18%20at%2010.04.26%20AM.png"></p>
 
 Once you display the indicators under each type/campaign, you are able to view additional information about each indicator in the right-hand column under "Properties". Below is a snapshot of some of the available fields.
 
