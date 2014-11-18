@@ -80,16 +80,24 @@ params = {
 }
 
 elems = ['_id','bucket_list','created','modified','sectors','status']
+ids = []
 
 r = requests.get(url, params=params, verify=False)
 j = json.loads(r.text)
 for ioc in j['objects']:
 	if ioc['campaign'] == [] and campaignname == "Unknown" and ioc['type'] == ioctype:
 		addentities()
+		for rel in ioc['relationships']:
+			b = {ioc['value']:rel['value']}
+			ids.append(b)
 	else:
 		for value in ioc['campaign']:
 			if value['name'] == campaignname and ioc['type'] == ioctype:
 				addentities()
-
-
+				for rel in ioc['relationships']:
+					b = {ioc['value']:rel['value']}
+					ids.append(b)
+for key in ids:
+	print key
+		
 me.returnOutput()
