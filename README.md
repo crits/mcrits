@@ -29,3 +29,7 @@ Once you display the indicators under each type/campaign, you are able to view a
 <p align="center">
 <img src="http://cl.ly/image/0T3t041G3831/Screen%20Shot%202014-11-17%20at%205.31.37%20PM.png"></p>
 
+### Todo
+
+- Add relationships to each indicator. When you right-click on an entity, you will be able to view the relationships, which will connect the indicator to other indicators/actors/campaigns that were defined.
+- Continue to add icons for more popular indicator types
