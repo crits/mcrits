@@ -20,12 +20,20 @@ def getLocalConfPath():
 	pathname = os.path.join(pathname, '..','local', 'mcrits.conf')
 	return os.path.normpath(pathname)
 
+def makeRequest(url, params):
+	r = requests.get(url, params=params, verify=False)
+	j = json.loads(r.text)
+	for camp in j['objects']:
+		ent = me.addEntity("mcrits.Campaign",camp['name'])
+	return j['meta']['next']
+
 configFile = getLocalConfPath()
 config = ConfigParser.SafeConfigParser()
 config.read(configFile)
 
 username = config.get('info', 'username')
 url = config.get('info', 'url')
+path = '/api/v1/campaigns/'
 api_key = config.get('info', 'api_key')
 
 # Setting up Maltego entities and getting initial variables.
@@ -36,16 +44,15 @@ host = sys.argv[1]
 
 # Setting up requests variables from mcrits.conf
 
-url = url + '/api/v1/campaigns/'
 params = {
 'api_key': api_key,
 'username': username,
 }
 
-r = requests.get(url, params=params, verify=False)
-j = json.loads(r.text)
-for camp in j['objects']:
-	ent = me.addEntity("mcrits.Campaign",camp['name'])
+next_ = makeRequest(url + path, params)
+while next_:
+	next_ = makeRequest(url + next_, params)
+
 ent = me.addEntity("mcrits.Campaign",'Unknown')
 
 #Return Maltego Output
