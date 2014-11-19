@@ -14,7 +14,7 @@ Requests Python Module
 
 ```
 $ cd /opt
-$ git clone git@github.com:brianwarehime/munk.git
+$ git clone git@github.com:brianwarehime/mcrits.git
 In Maltego, click on Maltego icon > Import > Import Configuration
 Select mcrits.mtz
 ```
