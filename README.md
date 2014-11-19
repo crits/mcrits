@@ -23,7 +23,7 @@ Before running mcrits, you will need to edit the configuration file mcrits/local
 
 Please note that this was made for *nix/OS X environments, so, if you are using this is Windows, you'll need to follow the guide below to get it working.
 
-#####Using in Windows
+#####Installing in Windows
 
 Using mcrits in Windows isn't that much work, just a few things you'll need to change. In Maltego, click on the Manage tab, then "Manage Tranforms". Once the dialog pops up, click on the search bar in the top right, then type in "List". This will return all the transforms named "List " which all the transforms for mcrits start with. Go into each of the following transforms:
 
