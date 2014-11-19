@@ -77,6 +77,7 @@ url = url + '/api/v1/indicators/'
 params = {
 'api_key': api_key,
 'username': username,
+'c-campaign.name': campaignname
 }
 
 elems = ['_id','bucket_list','created','modified','sectors','status']
