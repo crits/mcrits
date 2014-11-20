@@ -29,12 +29,12 @@ def makeRequest(url, params={}):
             ent = me.addEntity("mcrits.Type",ioc['type'] + "\r\n(" + campaignname + ")")
             ent.addAdditionalFields('campaign', 'campaign','',campaignname)
             ent.addAdditionalFields('ioctype', 'ioctype','',ioc['type'])
-		else:
-			for value in ioc['campaign']:
-				if value['name'] == campaignname:
-					ent = me.addEntity("mcrits.Type",ioc['type'] + "\r\n(" + campaignname + ")")
-					ent.addAdditionalFields('campaign', 'campaign','',campaignname)
-					ent.addAdditionalFields('ioctype', 'ioctype','',ioc['type'])
+        else:
+            for value in ioc['campaign']:
+                if value['name'] == campaignname:
+                    ent = me.addEntity("mcrits.Type",ioc['type'] + "\r\n(" + campaignname + ")")
+                    ent.addAdditionalFields('campaign', 'campaign','',campaignname)
+                    ent.addAdditionalFields('ioctype', 'ioctype','',ioc['type'])
 	return j['meta']['next']
 
 configFile = getLocalConfPath()
