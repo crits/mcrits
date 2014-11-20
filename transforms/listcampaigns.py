@@ -20,7 +20,7 @@ def getLocalConfPath():
 	pathname = os.path.join(pathname, '..','local', 'mcrits.conf')
 	return os.path.normpath(pathname)
 
-def makeRequest(url, params):
+def makeRequest(url, params={}):
 	r = requests.get(url, params=params, verify=False)
 	j = json.loads(r.text)
 	for camp in j['objects']:
@@ -51,7 +51,7 @@ params = {
 
 next_ = makeRequest(url + path, params)
 while next_:
-	next_ = makeRequest(url + next_, params)
+	next_ = makeRequest(url + next_)
 
 ent = me.addEntity("mcrits.Campaign",'Unknown')
 
