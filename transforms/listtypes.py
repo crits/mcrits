@@ -57,6 +57,7 @@ campaignname = sys.argv[1]
 params = {
 'api_key': api_key,
 'username': username,
+'limit':'100'
 }
 
 next_ = makeRequest(url + path, params)
