@@ -19,7 +19,16 @@ In Maltego, click on Maltego icon > Import > Import Configuration
 Select mcrits.mtz
 ```
 
-Before running mcrits, you will need to edit the configuration file mcrits/local/mcrits.conf. In this file are the necessary variables needed to contact your CRITs server, as well as the credentials and API key to use (You can generate an API key in CRITs, in your user profile setings). You will also need to enable API access for mcrits to be able to use CRITs. This can be done by going into CRITs and clicking on the gear icon in the top left, next, select "CRITs Control Panel", then under "SYSTEM", go into "General". There will be an option about 4 lines down, to "Enable API". Once you enable it, do a quick restart ```service apache2 restart``` and you should be good to go.
+Before running mcrits, you will need to create the configuration file mcrits/local/mcrits.conf. It should look something like this (change username and api_key accordingly).
+
+```
+[info]
+url = https://crits
+username = test
+api_key = da39a3ee5e6b4b0d3255bfef95601890afd80709
+```
+
+You will also need to enable API access for mcrits to be able to use CRITs. This can be done by going into CRITs and clicking on the gear icon in the top left, next, select "CRITs Control Panel", then under "SYSTEM", go into "General". There will be an option about 4 lines down, to "Enable API". Once you enable it, do a quick restart ```service apache2 restart``` and you should be good to go.
 
 Please note that this was made for *nix/OS X environments, so, if you are using this is Windows, you'll need to follow the guide below to get it working.
 
