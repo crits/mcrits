@@ -16,19 +16,19 @@ import os
 # Configuration Parser to grab necessary options.
 
 def getLocalConfPath():
-   	pathname = os.path.dirname(sys.argv[0])
-	pathname = os.path.abspath(pathname)
-	pathname = os.path.join(pathname, '..','local', 'mcrits.conf')
-	return os.path.normpath(pathname)
+    pathname = os.path.dirname(sys.argv[0])
+    pathname = os.path.abspath(pathname)
+    pathname = os.path.join(pathname, '..','local', 'mcrits.conf')
+    return os.path.normpath(pathname)
 
 def makeRequest(url, params={}):
-	r = requests.get(url, params=params, verify=False)
-	j = json.loads(r.text)
-	for ioc in j['objects']:
-		if ioc['campaign'] == [] and campaignname == "Unknown":
-			ent = me.addEntity("mcrits.Type",ioc['type'] + "\r\n(" + campaignname + ")")
-			ent.addAdditionalFields('campaign', 'campaign','',campaignname)
-			ent.addAdditionalFields('ioctype', 'ioctype','',ioc['type'])
+    r = requests.get(url, params=params, verify=False)
+    j = json.loads(r.text)
+    for ioc in j['objects']:
+        if ioc['campaign'] == [] and campaignname == "Unknown":
+            ent = me.addEntity("mcrits.Type",ioc['type'] + "\r\n(" + campaignname + ")")
+            ent.addAdditionalFields('campaign', 'campaign','',campaignname)
+            ent.addAdditionalFields('ioctype', 'ioctype','',ioc['type'])
 		else:
 			for value in ioc['campaign']:
 				if value['name'] == campaignname:
