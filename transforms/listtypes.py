@@ -57,6 +57,7 @@ campaignname = sys.argv[1]
 params = {
 'api_key': api_key,
 'username': username,
+'c-campaign.name': campaignname,
 'limit':'100'
 }
 
