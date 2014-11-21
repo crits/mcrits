@@ -42,6 +42,7 @@ params = {
 'api_key': api_key,
 'username': username,
 'c-campaign.name': campaignname,
+'limit': '100'
 }
 
 r = requests.get(url, params=params, verify=False)
