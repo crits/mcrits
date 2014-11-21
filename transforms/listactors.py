@@ -21,13 +21,42 @@ def getLocalConfPath():
     pathname = os.path.join(pathname, '..','local', 'mcrits.conf')
     return os.path.normpath(pathname)
 
+def makeRequest(url, params={}):
+    elems = ['_id','aliases','created','modified','description','sectors','status']
+    r = requests.get(url, params=params, verify=False)
+    j = json.loads(r.text)
+    for actor in j['objects']:
+        if actor['campaign'] == [] and campaignname == "Unknown":
+            ent = me.addEntity("mcrits.Actor",actor['name'] + "\r\n(" + campaignname + ")")
+            for elem in elems:
+                if actor[elem] == []:
+                    pass
+                else:
+                    if len(actor[elem][0]) == 1:
+                        ent.addAdditionalFields(elem, elem,'',actor[elem])
+                    else:
+                        ent.addAdditionalFields(elem, elem,'',actor[elem][0])
+                        ent.addAdditionalFields('source','source','',actor['source'][0]['name'])
+                        ent.addAdditionalFields('campaign', 'campaign','',campaignname)
+        else:
+            for value in actor['campaign']:
+                if value['name'] == campaignname:
+                    ent = me.addEntity("mcrits.Actor",actor['name'] + "\r\n(" + campaignname + ")")
+                    for elem in elems:
+                        if actor[elem] == []:
+                            pass
+                        else:
+                            if len(actor[elem][0]) == 1:
+                                ent.addAdditionalFields(elem, elem,'',actor[elem])
+                            else:
+                                ent.addAdditionalFields(elem, elem,'',actor[elem][0])
+                                ent.addAdditionalFields('source','source','',actor['source'][0]['name'])
+                                ent.addAdditionalFields('campaign', 'campaign','',campaignname)
+
 configFile = getLocalConfPath()
 config = ConfigParser.SafeConfigParser()
 config.read(configFile)
 
-username = config.get('info', 'username')
-url = config.get('info', 'url')
-api_key = config.get('info', 'api_key')
 
 # Setting up Maltego entities and getting initial variables.
 
@@ -37,43 +66,22 @@ campaignname = sys.argv[1]
 
 # Setting up requests variables from mcrits
 
-url = url + '/api/v1/actors/'
+username = config.get('info', 'username')
+url = config.get('info', 'url')
+path = '/api/v1/actors/'
+api_key = config.get('info', 'api_key')
+
 params = {
 'api_key': api_key,
 'username': username,
+'c-campaign.name': campaignname,
+'limit':'100'
 }
 
-elems = ['_id','aliases','created','modified','description','sectors','status']
+next_ = makeRequest(url + path, params)
+while next_:
+    next_ = makeRequest(url + next_)
 
-r = requests.get(url, params=params, verify=False)
-j = json.loads(r.text)
-for actor in j['objects']:
-    if actor['campaign'] == [] and campaignname == "Unknown":
-        ent = me.addEntity("mcrits.Actor",actor['name'] + "\r\n(" + campaignname + ")")
-        for elem in elems:
-            if actor[elem] == []:
-			    pass
-            else:
-                if len(actor[elem][0]) == 1:
-                    ent.addAdditionalFields(elem, elem,'',actor[elem])
-                else:
-                    ent.addAdditionalFields(elem, elem,'',actor[elem][0])
-                    ent.addAdditionalFields('source','source','',actor['source'][0]['name'])
-                    ent.addAdditionalFields('campaign', 'campaign','',campaignname)
-    else:
-        for value in actor['campaign']:
-            if value['name'] == campaignname:
-                ent = me.addEntity("mcrits.Actor",actor['name'] + "\r\n(" + campaignname + ")")
-                for elem in elems:
-                    if actor[elem] == []:
-                        pass
-                    else:
-                        if len(actor[elem][0]) == 1:
-                            ent.addAdditionalFields(elem, elem,'',actor[elem])
-                        else:
-                            ent.addAdditionalFields(elem, elem,'',actor[elem][0])
-                            ent.addAdditionalFields('source','source','',actor['source'][0]['name'])
-                            ent.addAdditionalFields('campaign', 'campaign','',campaignname)
 
 # Return Maltego Output
 
