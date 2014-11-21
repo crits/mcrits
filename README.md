@@ -30,7 +30,7 @@ api_key = da39a3ee5e6b4b0d3255bfef95601890afd80709
 
 You will also need to enable API access for mcrits to be able to use CRITs. This can be done by going into CRITs and clicking on the gear icon in the top left, next, select "CRITs Control Panel", then under "SYSTEM", go into "General". There will be an option about 4 lines down, to "Enable API". Once you enable it, do a quick restart ```service apache2 restart``` and you should be good to go.
 
-Please note that this was made for *nix/OS X environments, so, if you are using this is Windows, you'll need to follow the guide below to get it working.
+Please note that this was made for *nix/OS X environments, so, if you are using this is Windows or save the transforms in another directory besides /opt, you'll need to follow the guide below to get it working.
 
 #####Installing in Windows
 
@@ -64,4 +64,9 @@ Once you display the indicators under each type/campaign, you are able to view a
 ### Todo
 
 - Add relationships to each indicator. When you right-click on an entity, you will be able to view the relationships, which will connect the indicator to other indicators/actors/campaigns that were defined.
+
+### Credits
+
+- Thanks to http://www.flaticon.com/ for the icons used in mcrits
+- Thanks to @mjxg and @wxs for their contributions to the project.
 
