@@ -7,7 +7,7 @@ mcrits is a set of Maltego transforms that enable you to visualize your CRIT's D
 ### Requirements
 
 ```
-Requests Python Module
+pycrits Python Module
 ```
 
 ### Installation
