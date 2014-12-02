@@ -45,7 +45,11 @@ class mcrits(object):
         url = config.get('info', 'url')
         api_key = config.get('info', 'api_key')
         username = config.get('info', 'username')
-        return pycrits(url, username, api_key)
+        verify = config.get('info', 'verify')
+        crits = pycrits(url, username, api_key)
+        if verify == 'False':
+            crits.verify = False
+        return crits
 
     def get_single_obj(self, crits_type, id_):
         func = self._get_single_obj.get(crits_type, None)
