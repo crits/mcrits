@@ -20,7 +20,8 @@ class mcrits(object):
                                  'Email': self.crits.email,
                                  'IP': self.crits.ip,
                                  'RawData': self.crits.raw_data,
-                                 'Screenshot': self.crits.screenshot
+                                 'Screenshot': self.crits.screenshot,
+                                 'Actor': self.crits.actor
                                }
 
         self._get_multi_obj = {
@@ -34,7 +35,8 @@ class mcrits(object):
                                 'Email': self.crits.emails,
                                 'IP': self.crits.ips,
                                 'RawData': self.crits.raw_datas,
-                                'Screenshot': self.crits.screenshots
+                                'Screenshot': self.crits.screenshots,
+                                'Actor': self.crits.actors
                                }
 
     def get_crits(self):

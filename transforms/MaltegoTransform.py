@@ -164,7 +164,11 @@ class MaltegoTransform(object):
 def sanitise(value):
 	replace_these = ["&",">","<"];
 	replace_with = ["&amp;","&gt;","&lt;"];
-	tempvalue = value;
-	for i in range(0,len(replace_these)):
-		tempvalue = tempvalue.replace(replace_these[i],replace_with[i]);
-	return tempvalue;
+        if isinstance(value, list):
+            for j in range(0, len(value)):
+	        for i in range(0, len(replace_these)):
+                    value[j].replace(replace_these[i], replace_with[i]);
+        else:
+	    for i in range(0, len(replace_these)):
+                value.replace(replace_these[i], replace_with[i]);
+	return value;
