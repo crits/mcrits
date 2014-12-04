@@ -7,7 +7,7 @@ mcrits is a set of Maltego transforms that enable you to visualize your CRIT's D
 ### Requirements
 
 ```
-Requests Python Module
+pycrits Python Module
 ```
 
 ### Installation
@@ -26,6 +26,7 @@ Before running mcrits, you will need to create the configuration file mcrits/loc
 url = https://crits
 username = test
 api_key = da39a3ee5e6b4b0d3255bfef95601890afd80709
+verify = True
 ```
 
 You will also need to enable API access for mcrits to be able to use CRITs. This can be done by going into CRITs and clicking on the gear icon in the top left, next, select "CRITs Control Panel", then under "SYSTEM", go into "General". There will be an option about 4 lines down, to "Enable API". Once you enable it, do a quick restart ```service apache2 restart``` and you should be good to go.
