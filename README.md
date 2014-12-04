@@ -14,7 +14,7 @@ pycrits Python Module
 
 ```
 $ cd /opt
-$ git clone git@github.com:brianwarehime/mcrits.git
+$ git clone git@github.com:crits/mcrits.git
 In Maltego, click on Maltego icon > Import > Import Configuration
 Select mcrits.mtz
 ```
@@ -25,7 +25,7 @@ Before running mcrits, you will need to create the configuration file mcrits/loc
 [info]
 url = https://crits
 username = test
-api_key = da39a3ee5e6b4b0d3255bfef95601890afd80709
+api_key = 9999999999999999999999999999999999999999
 verify = True
 ```
 
