@@ -21,7 +21,8 @@ class mcrits(object):
                                  'IP': self.crits.ip,
                                  'RawData': self.crits.raw_data,
                                  'Screenshot': self.crits.screenshot,
-                                 'Actor': self.crits.actor
+                                 'Actor': self.crits.actor,
+                                 'ActorIdentifier': self.crits.actor_identifier
                                }
 
         self._get_multi_obj = {
@@ -36,7 +37,8 @@ class mcrits(object):
                                 'IP': self.crits.ips,
                                 'RawData': self.crits.raw_datas,
                                 'Screenshot': self.crits.screenshots,
-                                'Actor': self.crits.actors
+                                'Actor': self.crits.actors,
+                                'ActorIdentifier': self.crits.actor_identifier
                                }
 
     def get_crits(self):
