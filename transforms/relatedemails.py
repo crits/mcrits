@@ -17,9 +17,9 @@ for result in crits.get_related(crits_type, id_, 'Email'):
                             value=obj['date'])
     ent.addAdditionalFields(fieldName='from',
                             displayName='From',
-                            value=obj['from'])
+                            value=obj.get('from', ''))
     ent.addAdditionalFields(fieldName='subject',
                             displayName='subject',
-                            value=obj['subject'])
+                            value=obj.get('subject', ''))
 
 me.returnOutput()
