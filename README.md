@@ -63,6 +63,6 @@ is done by right clicking the object and selecting the transform.
 
 ### Credits
 
-- Thanks to [Brian Warehime](https://twitter.com/brianwarehime) for starting
+- Thanks to [Brian Warehime](https://twitter.com/brian_warehime) for starting
   this project.
 - Thanks to http://www.flaticon.com/ for the icons used in mcrits
