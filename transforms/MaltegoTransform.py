@@ -68,7 +68,7 @@ class MaltegoEntity(object):
                     print "<Field Name=\"" + str(self.additionalFields[i][0]) + "\" DisplayName=\"" + str(self.additionalFields[i][1]) + "\">" + str(self.additionalFields[i][3]) + "</Field>"
                 else:
                     print "<Field MatchingRule=\"" + str(self.additionalFields[i][2]) + "\" Name=\"" + str(self.additionalFields[i][0]) + "\" DisplayName=\"" + str(self.additionalFields[i][1]) + "\">" + str(self.additionalFields[i][3]) + "</Field>"
-                print "</AdditionalFields>"
+            print "</AdditionalFields>"
         if (len(self.iconURL) > 0):
             print "<IconURL>" + self.iconURL + "</IconURL>"
         print "</Entity>"
