@@ -1,73 +1,68 @@
 ### mcrits
-##### Visualize CRITs IOC's in Maltego
+##### Visualize CRITs data in Maltego
 -------------------------------------------------
 
-mcrits is a set of Maltego transforms that enable you to visualize your CRIT's DB, which currently includes the ability to view the current campaigns, the types of indicators in each campaign, as well as the indicators and actors in each campaign. There is an abundance of information available in CRITs, so I'm trying to determine the best way to visualize that in Maltego without overloading the user and maintaining some sort of order. If you have any additions you think would be good to mcrits, please let me know.
+mcrits allows you to visualize your CRITs DB via local Maltego transforms.
+
+This is very unpolished code and may or may not see updates in the future
+depending upon community feedback. If you use mcrits and have any feedback,
+positive or negative, please let us know!
 
 ### Requirements
 
-```
-pycrits Python Module
-```
+mcrits requires [pycrits](https://github.com/crits/pycrits). The pycrits code
+is also in-flux so please be sure to stay up to date with it as the API is
+subject to change.
 
 ### Installation
 
+Clone the mcrits repository somewhere.
+
 ```
-$ cd /opt
 $ git clone git@github.com:crits/mcrits.git
-In Maltego, click on Maltego icon > Import > Import Configuration
-Select mcrits.mtz
 ```
 
-Before running mcrits, you will need to create the configuration file mcrits/local/mcrits.conf. It should look something like this (change username and api_key accordingly).
+You now need to configure mcrits for talking to your CRITs server. Copy the
+```local/mcrits.conf.sample``` file to ```local/mcrits.conf``` and then edit
+```local/mcrits.conf```. The contents of this file should be self-explanatory,
+with the exception of ```verify```, which is used to control verification of
+the certificate on the CRITs server.
 
-```
-[info]
-url = https://crits
-username = test
-api_key = 9999999999999999999999999999999999999999
-verify = True
-```
+Now that things are configured you need to import the transforms and entities
+into Maltego. Do this by opening Maltego and clicking on the Maltego icon.
+Select ```Import``` then ```Import Configuration```. Navigate to the
+```mcrits.mtz``` file in the mcrits repository and follow the wizard from
+there.
 
-You will also need to enable API access for mcrits to be able to use CRITs. This can be done by going into CRITs and clicking on the gear icon in the top left, next, select "CRITs Control Panel", then under "SYSTEM", go into "General". There will be an option about 4 lines down, to "Enable API". Once you enable it, do a quick restart ```service apache2 restart``` and you should be good to go.
+The transforms are all local transforms, and as such are configured to run on
+my system (I'm trying to find a way to fix this). For now you will need to go
+to the ```Manage``` menu and select ```Manage Transforms```. For each of the
+CRITs transforms you need to make sure that the ```Working Directory``` points
+to your mcrits repository, and that the ```Command line``` points to your
+python binary.
 
-Please note that this was made for *nix/OS X environments, so, if you are using this is Windows or save the transforms in another directory besides /opt, you'll need to follow the guide below to get it working.
-
-#####Installing in Windows
-
-Using mcrits in Windows isn't that much work, just a few things you'll need to change. In Maltego, click on the Manage tab, then "Manage Tranforms". Once the dialog pops up, click on the search bar in the top right, then type in "List". This will return all the transforms named "List " which all the transforms for mcrits start with. Go into each of the following transforms:
-
-List Actors
-List Campaigns
-List Indicator Types
-List Indicators
-Click on each one of those, and for each one, in the bottom right, under "Transform Inputs", change the variables to fit your needs. So, change "Command Line" to where Python is, e.g. C:\Python27\python.exe, then "Command Parameters" can stay the same, lastly change "Working Directory" to where you saved the mcrits transforms, e.g. C:\Transforms\mcrits\transforms\
-
-After that, you should be good to go. Just run the transforms as normal.
+On the CRITs server please make sure the API is enabled.
 
 ### Using mcrits
 
-After you edited the configuration file and imported the mcrits.mtz file into Maltego, you are ready to go. To get started, from the palette, under mcrits, drag the "CRITs Server" icon into the main graph window. Right-clicking on the CRITs server will allow you to list the current campaigns in your CRITs DB. There are two categories of campaigns that will be displayed under the server, one is the campaigns you define, and the other is an "UNKNOWN" default category that will hold all the indicators that aren't assigned to a campaign. So, once the campaigns are displayed, you can right-click on each campaign to either display the indicator types or the actors belonging to that campaign. For now, the actors are the last-object and there is no more transforms available, however, if you right-click on an indicator type, you can list the indicators belonging to that type and that campaign. Below is a screenshot of a sample environment.
+To start using mcrits pick an item from the palette and drag it to the main
+graph window. As this is your first object you must edit the properties of it
+to make sure any missing fields are populated. This always includes the ID
+field (this is the ID of the object in CRITs, available on the details page).
+Depending  upon the object there may be other fields too. You only need to do
+this for the first object.
 
-<p align="center">
-<img src="http://f.cl.ly/items/1Y241U0Z1W2R2W2a0u46/Screen%20Shot%202014-11-18%20at%204.32.11%20PM.png"></p>
-
-After you display the indicators from each type, you can then perform the indicator type specific functions you normally can in Maltego, such as Domain to IP, or Email Address to Social Network accounts.
-
-<p align="center">
-<img src="http://f.cl.ly/items/1U351r2o2o1k081D091b/Screen%20Shot%202014-11-18%20at%204.32.31%20PM.png"></p>
-
-Once you display the indicators under each type/campaign, you are able to view additional information about each indicator in the right-hand column under "Properties". Below is a snapshot of some of the available fields.
-
-<p align="center">
-<img src="http://cl.ly/image/0T3t041G3831/Screen%20Shot%202014-11-17%20at%205.31.37%20PM.png"></p>
+The next step is to perform a transform on the object you just editied. This
+is done by right clicking the object and selecting the transform.
 
 ### Todo
 
-- Add relationships to each indicator. When you right-click on an entity, you will be able to view the relationships, which will connect the indicator to other indicators/actors/campaigns that were defined.
+- Fix "working directory" problem.
+- Stop using CRITs specific entities where it makes sense.
+- Probably a ton more... ;)
 
 ### Credits
 
+- Thanks to [Brian Warehime](https://twitter.com/brianwarehime) for starting
+  this project.
 - Thanks to http://www.flaticon.com/ for the icons used in mcrits
-- Thanks to @mjxg and @wxs for their contributions to the project.
-
