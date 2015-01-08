@@ -165,7 +165,7 @@ def sanitise(value):
     if isinstance(value, list):
         for j in range(0, len(value)):
             for i in range(0, len(replace_these)):
-                value = value[j].replace(replace_these[i], replace_with[i])
+                value[j] = value[j].replace(replace_these[i], replace_with[i])
     else:
         for i in range(0, len(replace_these)):
             value = value.replace(replace_these[i], replace_with[i])
